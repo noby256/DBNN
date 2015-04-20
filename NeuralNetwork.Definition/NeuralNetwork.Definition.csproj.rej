@@ -1,0 +1,9 @@
+diff a/NeuralNetwork.Definition/NeuralNetwork.Definition/NeuralNetwork.Definition.csproj b/NeuralNetwork.Definition/NeuralNetwork.Definition/NeuralNetwork.Definition.csproj	(rejected hunks)
+@@ -42,6 +42,7 @@
+     <Reference Include="System.Xml" />
+   </ItemGroup>
+   <ItemGroup>
++    <Compile Include="CD.cs" />
+     <Compile Include="Layer.cs" />
+     <Compile Include="NeuralNetwork.cs" />
+     <Compile Include="NeuroHelper.cs" />

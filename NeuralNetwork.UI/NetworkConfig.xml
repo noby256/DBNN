@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Network>
+  <CountOfLayers>5</CountOfLayers>
+  <TrainingSetCount>1000</TrainingSetCount>
+  <Layers>
+    <Layer>
+      <Pretrain>true</Pretrain>
+      <RbmConfig>
+        <TrainingAlgorithm>Hinton</TrainingAlgorithm>
+        <CountOfEpoches>100</CountOfEpoches>
+        <Alpha>0.01 </Alpha>
+        <KParameter>2</KParameter>
+        <LoggingEnabled>true</LoggingEnabled>
+        <InputDataType>Binary</InputDataType>
+      </RbmConfig>
+      <ActivationFunction>Sigmoidal</ActivationFunction>
+      <NeuronsCount>500</NeuronsCount>
+      <WeightsCount>784</WeightsCount>
+      <IsBinary>false</IsBinary>
+      <Alpha>0.01</Alpha>
+    </Layer>
+    <Layer>
+      <Pretrain>true</Pretrain>
+      <RbmConfig>
+        <TrainingAlgorithm>Hinton</TrainingAlgorithm>
+        <CountOfEpoches>100</CountOfEpoches>
+        <Alpha>0.01 </Alpha>
+        <KParameter>2</KParameter>
+        <LoggingEnabled>true</LoggingEnabled>
+        <InputDataType>Binary</InputDataType>
+      </RbmConfig>
+      <ActivationFunction>Sigmoidal</ActivationFunction>
+      <NeuronsCount>1000</NeuronsCount>
+      <WeightsCount>500</WeightsCount>
+      <IsBinary>false</IsBinary>
+    </Layer >
+    <Layer>
+      <Pretrain>true</Pretrain>
+      <RbmConfig>
+        <TrainingAlgorithm>Hinton</TrainingAlgorithm>
+        <CountOfEpoches>100</CountOfEpoches>
+        <Alpha>0.01 </Alpha>
+        <KParameter>2</KParameter>
+        <LoggingEnabled>true</LoggingEnabled>
+        <InputDataType>Binary</InputDataType>
+      </RbmConfig>
+      <ActivationFunction>Sigmoidal</ActivationFunction>
+      <NeuronsCount>2000</NeuronsCount>
+      <WeightsCount>1000</WeightsCount>
+      <IsBinary>false</IsBinary>
+    </Layer>
+    <Layer>
+      <Pretrain>false</Pretrain>
+      <ActivationFunction>Sigmoidal</ActivationFunction>
+      <NeuronsCount>10</NeuronsCount>
+      <WeightsCount>2000</WeightsCount>
+      <IsBinary>false</IsBinary>
+    </Layer>
+  </Layers>
+</Network>
