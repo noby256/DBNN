@@ -55,7 +55,7 @@ namespace NeuralNetwork.UI
             DirectoryInfo dir = Directory.GetParent(
                 Directory.GetParent(
                 Directory.GetParent(Directory.GetCurrentDirectory()).ToString()).ToString());
-            NetworkConfigFilePath.Text = dir.ToString() + @"\Data2\NetworkConfig.xml";   // @"D:\source\VS_cs\DBNN\TEST\NetworkConfig.xml";
+            NetworkConfigFilePath.Text = dir.ToString() + @"\Data2\NetworkConfig.xml";
             BatchesDirPath.Text = dir.ToString() + @"\Data2\Data2_batches";
             EtalonesFilePath.Text = dir.ToString() + @"\Data2\Data2_etalons.txt";
             

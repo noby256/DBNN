@@ -41,7 +41,7 @@ namespace NeuralNetwork.UI.Notifiers
                 {
                     _block.Text = _block.Text.Remove(0, 600);
                 }
-                if (replaceLine)
+                if (replaceLine && _block.Text.Contains("\n"))
                 {
                     _block.Text = _block.Text.Remove(_block.Text.LastIndexOf("\n"));
                 }
