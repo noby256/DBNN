@@ -10,6 +10,7 @@ using NeuralNetwork.UI.Notifiers;
 using NeuralNetwork.UI.ViewModels;
 using MessageBox = System.Windows.MessageBox;
 using SaveFileDialog = Microsoft.Win32.SaveFileDialog;
+using System.Reflection;
 
 namespace NeuralNetwork.UI
 {
@@ -51,10 +52,16 @@ namespace NeuralNetwork.UI
         public MainWindow()
         {
             InitializeComponent();
-            NetworkConfigPath.Text = @"D:\source\VS_cs\DBNN\TEST\NetworkConfig.xml";
-            BatchesPath.Text = @"D:\source\VS_cs\DBNN\TEST\Data2_batches";
-            EtalonesPath.Text = @"D:\source\VS_cs\DBNN\TEST\Data2_etalons.txt";
+            DirectoryInfo dir = Directory.GetParent(
+                Directory.GetParent(
+                Directory.GetParent(Directory.GetCurrentDirectory()).ToString()).ToString());
+            NetworkConfigFilePath.Text = dir.ToString() + @"\Data2\NetworkConfig.xml";   // @"D:\source\VS_cs\DBNN\TEST\NetworkConfig.xml";
+            BatchesDirPath.Text = dir.ToString() + @"\Data2\Data2_batches";
+            EtalonesFilePath.Text = dir.ToString() + @"\Data2\Data2_etalons.txt";
             
+            EtalonesValidatePath.Text = dir.ToString() + @"\Data2\Data2_etalons_validation.txt";
+            ValidationDataPath.Text = dir.ToString() + @"\Data2\Data2_batches";
+
             _cancellationToken = new CancellationTokenSource();
             _notifier = new TextBlockNotifier(LoggerTextBox);
             viewModel = new MainViewModel();
@@ -72,30 +79,30 @@ namespace NeuralNetwork.UI
         /// </param>
         private void TrainNnClick(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(BatchesPath.Text))
+            if (string.IsNullOrEmpty(BatchesDirPath.Text))
             {
                 MessageBox.Show("Please set path to data");
                 return;
             }
-            if (string.IsNullOrEmpty(EtalonesPath.Text))
+            if (string.IsNullOrEmpty(EtalonesFilePath.Text))
             {
                 MessageBox.Show("Please set path to etalones");
                 return;
             }
-            if (string.IsNullOrEmpty(NetworkConfigPath.Text))
+            if (string.IsNullOrEmpty(NetworkConfigFilePath.Text))
             {
                 MessageBox.Show("Please set path to network config");
                 return;
             }
             var batchSize = int.Parse(BatchSize.Text);
             batchContainer = new BatchContainer(batchSize);
-            batchContainer.ReadData(BatchesPath.Text);
-            batchContainer.GetEtaloneNumbers(EtalonesPath.Text);
+            batchContainer.ReadData(BatchesDirPath.Text);
+            batchContainer.GetEtaloneNumbers(EtalonesFilePath.Text);
 
             try
             {
                 var serializer = new XmlSerializer(typeof(NeuralNetworkModel));
-                var reader = new StreamReader(NetworkConfigPath.Text);
+                var reader = new StreamReader(NetworkConfigFilePath.Text);
                 neuralNetwork = (NeuralNetworkModel)serializer.Deserialize(reader);
                 //neuralNetwork.validate();
                 reader.Close();
@@ -185,7 +192,7 @@ namespace NeuralNetwork.UI
                 var filePath = fileDialog.SelectedPath;
                 if (filePath != string.Empty)
                 {
-                    BatchesPath.Text = filePath;
+                    BatchesDirPath.Text = filePath;
                 }
             }
         }
@@ -208,7 +215,7 @@ namespace NeuralNetwork.UI
                                  };
             if (fileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                NetworkConfigPath.Text = fileDialog.FileName;
+                NetworkConfigFilePath.Text = fileDialog.FileName;
             }
         }
 
@@ -230,7 +237,7 @@ namespace NeuralNetwork.UI
                                  };
             if (fileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                EtalonesPath.Text = fileDialog.FileName;
+                EtalonesFilePath.Text = fileDialog.FileName;
             }
         }
 

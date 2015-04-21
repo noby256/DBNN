@@ -28,15 +28,15 @@
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="5,10,0,0">
                             <TextBlock Text="Path to network config:" Width="200" VerticalAlignment="Center"/>
-                            <TextBox Name="NetworkConfigPath" Width="300" VerticalContentAlignment="Center" IsReadOnly="True" Height="30" />
+                            <TextBox Name="NetworkConfigFilePath" Width="300" VerticalContentAlignment="Center" IsReadOnly="True" Height="30" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="5,10,0,0">
                             <TextBlock Text="Path to batches:" Width="200" VerticalAlignment="Center"/>
-                            <TextBox x:Name="BatchesPath" Width="300" VerticalContentAlignment="Center" IsReadOnly="True" Height="30" />
+                            <TextBox x:Name="BatchesDirPath" Width="300" VerticalContentAlignment="Center" IsReadOnly="True" Height="30" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="5,10,0,0">
                             <TextBlock Text="Path to etalone data:" Width="200" VerticalAlignment="Center"/>
-                            <TextBox x:Name="EtalonesPath" Width="300" VerticalContentAlignment="Center" IsReadOnly="True" Height="30" />
+                            <TextBox x:Name="EtalonesFilePath" Width="300" VerticalContentAlignment="Center" IsReadOnly="True" Height="30" />
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>

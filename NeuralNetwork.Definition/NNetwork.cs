@@ -234,7 +234,7 @@ namespace NeuralNetwork.Definition
             {
                 foreach (var item in batch)
                 {
-                    Notifier.Notify(string.Format("Cyclecount is: {0};", cyclecount));
+                    //Notifier.Notify(string.Format("Cyclecount is: {0};", cyclecount));
                     Layers[0].CalculateOutputs(item);
                     for (var i = 1; i < Layers.Length; i++)
                     {
@@ -263,16 +263,12 @@ namespace NeuralNetwork.Definition
                         sumE += CalculateError(item, item);
                     }
                     cyclecount++;
-                    
-                    if (cyclecount % 10 == 0)
-                    {
-                        Notifier.Notify(string.Format("Testing on validation data... Processed {0} samples", cyclecount),true);
-                    }
+                    Notifier.Notify(string.Format("Testing on validation data... Processed {0} samples", cyclecount),true);
                 }
             }
             var percent = 100 - sumE / ((double)cyclecount) * 100;
 
-            Notifier.Notify(string.Format("Testing data on etalones. Error is:{0}; Percent of correct symbols is {1} %;", sumE, Math.Round(percent, 2)));
+            Notifier.Notify(string.Format("Testing data on etalones. Didn't recognized {0} files; Percent of correct symbols is {1} %;", sumE, Math.Round(percent, 2)));
         }
 
         /// <summary>

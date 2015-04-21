@@ -47,7 +47,7 @@ namespace NeuralNetwork.UI.ViewModels
 		{
 			Emin = 1e-4;
 			Alpha = 0.01;
-			BatchSize = 10;
+			BatchSize = 3;
 		}
 
         /// <summary>
